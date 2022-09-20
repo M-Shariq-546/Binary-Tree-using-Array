@@ -63,9 +63,12 @@ class tree
               cout << "\n";
               for (int i = 0; i < 10; i++) {
                 if (arr[i] != '\0')
+                {
                   cout << arr[i];
-                else
+                }
+                else{
                   cout << "->";
+              }
               }
               return 0;
             }
@@ -76,9 +79,8 @@ int main()
     t.insertRoot('7');
     t.setLeftElement(0 , '8');
     t.setRightElement(0 , '4');
-    t.setRightElement(1 , '5');
+    t.setLeftElement(1 , '5');
     t.setRightElement(1 , '9');
     t.setRightElement(2 , '2');
-    t.setRightElement(2 , '3');
     t.print_tree();
 }
