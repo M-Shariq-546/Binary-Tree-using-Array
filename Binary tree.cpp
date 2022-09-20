@@ -68,8 +68,8 @@ int main()
     t.insertAtStart(86);
     t.insertAtStart(96);
     t.insertAtStart(106);
-    // t.getFirstElement();
-    // t.getFirstElement();
+    t.getFirstElement();
+    t.getFirstElement();
     t.getLeftElement(0);
     t.getRightElement(2);
 }
