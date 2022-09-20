@@ -4,72 +4,81 @@ class tree
 {
     private:
         const int size = 10;
-        int arr[];
+        char arr[];
         public:
             //Array initializes
             void initialize()
             {
                 for(int i=0 ; i<size ; i++)
                 {
-                    arr[i] = -9999;
+                    arr[i] = '\0';
                 }
             }
-            bool isFull()
+            bool isEmpty()
             {
                 for(int i=0 ; i<size ; i++)
                 {
-                    if(arr[i] == -9999)
+                    if(arr[i] == '\0')
                     {
-                        return false;
+                        return true;
                     }
                 }
-                return true;
+                return false;
             }
-            void insertAtStart(int x)
+            int insertRoot(char x)
             {
-                if(arr[0] == -9999)
+                if(arr[0] != '\0')
                 {
-                    arr[0] = x;
+                    cout<<"This root is already created";
                 }
                 else{
-                    for(int i=0 ; i<size ; i++)
-                    {
-                        arr[i+1] = arr[i];
-                    }
                     arr[0] = x;
                 }
+                return 0;
             }
-            void getFirstElement()
+            int setLeftElement(int pos , char x)
             {
-                cout<<arr[0]<<endl;
-                for(int i=0 ; i<size ; i++)
+                if(arr[pos] == '\0')
                 {
-                    arr[i] = arr[i+1];
+                    cout<<(pos *2 ) + 1<<"Can't set as child"<<endl;
                 }
-            }        
-            void getLeftElement(int pos)
-            {
-                cout<<arr[(pos * 2) + 1]<<endl;
+                else{
+                    arr[(pos * 2 ) + 1] = x;
+                }
+                return 0;
             }
-            void getRightElement(int pos)
+            int setRightElement(int pos , char x)
             {
-                cout<<arr[(pos * 2) + 2]<<endl;
+                if(arr[pos] == '\0')
+                {
+                    cout<<(pos *2 ) + 2<<"Can't set as child"<<endl;
+                }
+                else{
+                    arr[(pos * 2 ) + 2] = x;
+                }
+                return 0;
+            }
+            int print_tree() 
+            {  
+              cout << "\n";
+              for (int i = 0; i < 10; i++) {
+                if (arr[i] != '\0')
+                  cout << arr[i];
+                else
+                  cout << "->";
+              }
+              return 0;
             }
 };
 int main()
 {
     tree t;
-    t.insertAtStart(15);
-    t.insertAtStart(26);
-    t.insertAtStart(36);
-    t.insertAtStart(46);
-    t.insertAtStart(56);
-    t.insertAtStart(76);
-    t.insertAtStart(86);
-    t.insertAtStart(96);
-    t.insertAtStart(106);
-    t.getFirstElement();
-    t.getFirstElement();
-    t.getLeftElement(0);
-    t.getRightElement(2);
+    t.insertRoot('7');
+    t.setLeftElement(0 , '8');
+    t.setRightElement(0 , '4');
+    t.setRightElement(1 , '5');
+    t.setRightElement(1 , '9');
+    t.setRightElement(2 , '2');
+    t.setRightElement(2 , '3');
+    t.print_tree();
 }
